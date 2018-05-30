@@ -1,0 +1,8 @@
+- hosts: jumpbox
+  become: true
+  gather_facts: false
+  vars:
+
+  roles:
+     - provision-aws
+

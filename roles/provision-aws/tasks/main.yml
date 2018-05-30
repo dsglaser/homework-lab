@@ -1,0 +1,33 @@
+---
+# tasks file for provision-aws
+
+- name: Copy common.sh
+  copy: 
+   src: common.sh
+   dest: /root/common.sh
+
+- name: make bin directory
+  file:
+   path: /root/bin
+   state: directory
+
+- name: Copy jq and make executeable
+  copy: 
+   src: jq
+   dest: /root/bin/jq
+   mode: 0766
+
+- name: copy order_svc and make executeable
+  copy: 
+   src: order_svc.sh
+   dest: /root/order_svc.sh
+   mode: 0766
+
+- name: template credential.rc
+  template: 
+   src: credential.rc.j2
+   dest: /root/credential.rc
+   mode: 0766
+
+#- name: execute provisioning script
+
